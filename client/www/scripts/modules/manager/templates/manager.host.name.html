@@ -23,11 +23,12 @@
        <!--class="host-name-input"-->
        <!--name="host"-->
        <!--placeholder="host1.example.com"-->
-       <!--typeahead-focus-first="false"-->
-       <!--typeahead-on-select="onPMServerSelect($item)"-->
-       <!--typeahead="server as server.host + ' : ' + server.port for server in pmServers"-->
        <!--sl-common-select-on-click-->
        <!--required-->
+       <!--typeahead-focus-first="false"-->
+       <!--typeahead-on-select="onHostServerSelect($item, host)"-->
+       <!--typeahead="server as server.host  + ' : ' + server.port for server in hostServers"-->
   <!--/>-->
+
 <div ng-model="currentHost.validation.name" class="validation-message manager-input-validation"></div>
 

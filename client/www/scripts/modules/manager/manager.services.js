@@ -44,6 +44,7 @@ Manager.service('ManagerServices', [
         });
         if (!bExists) {
           // add this one to the localStorage
+          $log.debug('| 1 [addTypeAheadServer] Add To Host Servers: ' + config.host + ':' + config.port);
           svc.addToHostServers(config);
         }
       }

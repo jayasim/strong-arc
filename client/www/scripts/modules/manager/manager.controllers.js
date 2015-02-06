@@ -446,7 +446,12 @@ Manager.controller('ManagerMainController', [
     *
     *
     * */
-    $scope.onHostServerSelect = function(item) {
+    $scope.onHostServerSelect = function(item, host) {
+      if (host) {
+        host.host = item.host;
+        host.port = item.port;
+        return;
+      }
       $scope.currentPM = item;
     };
     $scope.initAddNewPMHost = function() {
