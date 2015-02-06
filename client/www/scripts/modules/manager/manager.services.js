@@ -41,6 +41,11 @@ Manager.service('ManagerServices', [
       else {
         // fresh populate
         collection.map(function(cItem) {
+          if (existingServers.length === 0) {
+            existingServers.push(cItem);
+          }
+          // iterate over list
+          // only add unique values
           svc.addToHostServers(cItem);
         });
       }
