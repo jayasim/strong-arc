@@ -446,6 +446,9 @@ Manager.controller('ManagerMainController', [
     *
     *
     * */
+    $scope.onHostServerSelect = function(item) {
+      $scope.currentPM = item;
+    };
     $scope.initAddNewPMHost = function() {
       if (!$scope.isShowAddHostForm) {
         // start the 'add new PM Host flow
@@ -478,6 +481,12 @@ Manager.controller('ManagerMainController', [
       if ($scope.currentPM.host && $scope.currentPM.port) {
         $scope.mesh.models.ManagerHost.create($scope.currentPM,
           function(err, inst) {
+            if (err) {
+              $log.warn('bad create host: ' + err.message);
+              return;
+            }
+            ManagerServices.addTypeAheadServer({host:$scope.currentPM.host, port:$scope.currentPM.port});
+
             $scope.killForm();
             $log.debug('added: ' + inst);
             loadHosts();
@@ -533,6 +542,8 @@ Manager.controller('ManagerMainController', [
             $log.warn('bad host save: ' + err.message);
           }
           $log.debug('SAVE RESPONSE: ' + JSON.stringify(response));
+          // add host to type-ahead db
+          ManagerServices.addTypeAheadServer({host:host.host, port:host.port});
           loadHosts();
           return host;
         });

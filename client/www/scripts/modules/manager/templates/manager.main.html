@@ -102,8 +102,8 @@
                      class="host-name-input"
                      name="host"
                      typeahead-focus-first="false"
-                     typeahead-on-select="onPMServerSelect($item)"
-                     typeahead="server as server.host for server in hostServers"
+                     typeahead-on-select="onHostServerSelect($item)"
+                     typeahead="server as server.host  + ' : ' + server.port for server in hostServers"
                      sl-common-select-on-click
                      required
                      placeholder="host" />
