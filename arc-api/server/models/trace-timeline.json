@@ -1,0 +1,13 @@
+{
+  "name": "TraceTimeline",
+  "base": "Model",
+  "properties": {
+    "data": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

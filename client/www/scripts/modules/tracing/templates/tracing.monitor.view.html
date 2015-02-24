@@ -1,0 +1,84 @@
+<div class='monitor-view'>
+  <div role='breadcrumbs'></div>
+  <div class='panel panel-primary'>
+    <div class='panel-heading clearfix'>
+
+      <div class='row'>
+
+        <span class='panel-title pull-left col-sm-8'>
+          Historical statistics for Node.js application '<strong role='project-id'></strong>'
+        </span>
+
+        <div data-hook='pid-selector' class='pid-selector col-sm-4'>
+
+          <!-- PID Button -->
+          <div data-hook='pids' class="btn-group btn-group-sm  pull-right">
+            <button type="button" class="btn btn-default dropdown-toggle btn-primary" data-toggle="dropdown">
+              PID <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu"></ul>
+          </div>
+
+          <!-- Host Button -->
+          <div data-hook='hosts' class="btn-group btn-group-sm  pull-right">
+            <button type="button" class="btn btn-default dropdown-toggle btn-primary" data-toggle="dropdown">
+              Host <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu"></ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class='panel-body'>
+      <div class='row'>
+        <div id='stats-history-wait'>
+          <div class='well center'>
+            <!-- <img src="mountPath + '/images/loading.gif"/> -->
+          </div>
+        </div>
+        <div id='cpu-history-cont' data-hook='cpumonitor'></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading help">
+      <h3 class="panel-title">Memory Usage History</h3>
+    </div>
+    <div class="hidden alert alert-default" role="help-description">
+      <p>
+        This chart shows the memory usage of the monitored Node.js program over time.
+      </p>
+    </div>
+    <div id='memory-history-cont' data-hook='memmonitor'></div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading help">
+      <h3 class="panel-title">Transaction History</h3>
+    </div>
+    <div class="hidden alert alert-default" role="help-description">
+      <p>
+        Transaction sequences are identifiable routes through a program, such as all of the code invoked to respond to an incoming http request.
+        The list below contains all of the idenfitied routes active in the program during the profiling window.
+      </p>
+      <p>
+        Select any transaction below to see the distinct code paths that handle the transaction.  Each code path can be clicked on as well to see
+        details on that individual code path (including callback delays and a flame graph of execution time)
+      </p>
+    </div>
+
+    <ul data-hook='transaction-list-cont' class='transactions list-group'>
+      <header class='list-group-item'>
+        <table>
+          <thead>
+          <tr>
+            <th class='transaction-route'>Transaction Route</th>
+            <th class='transaction-average-mean'>Mean Processing Time</th>
+          </tr>
+          </thead>
+          <table>
+      </header>
+    </ul>
+  </div>
+</div>

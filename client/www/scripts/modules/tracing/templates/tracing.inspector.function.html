@@ -1,0 +1,51 @@
+<div class='function-details'>
+
+  <div class='module row'>
+    <div class='lab col-md-12 col-lg-4'>
+      Module
+    </div>
+
+    <div class='col-md-12 col-lg-8 value'>
+      <%= fns[item.id].module.name %>
+    </div>
+  </div>
+
+
+  <% if (fns[item.id].module && fns[item.id].module.filename) { %>
+  <div class='filename row'>
+    <div class='lab col-md-12 col-lg-4'>
+      Filename
+    </div>
+
+    <div class='col-md-12 col-lg-8 value'>
+      <%= fns[item.id].module.filename %>
+    </div>
+  </div>
+  <% } %>
+
+
+  <% if (fns[item.id].start) { %>
+
+  <div class='line row'>
+    <div class='lab col-md-12 col-lg-4'>
+      Line
+    </div>
+
+    <div class='col-md-12 col-lg-8 value'>
+      <%= fns[item.id].start.line %>
+    </div>
+  </div>
+
+  <div class='column row'>
+    <div class='lab col-md-12 col-lg-4'>
+      Column
+    </div>
+
+    <div class='col-md-12 col-lg-8 value'>
+      <%= fns[item.id].start.column %>
+    </div>
+  </div>
+
+  <% } %>
+
+</div>

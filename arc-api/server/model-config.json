@@ -10,6 +10,30 @@
     "dataSource": null,
     "public": true
   },
+  "Trace": {
+    "dataSource": null,
+    "public": true
+  },
+  "TraceHost": {
+    "dataSource": null,
+    "public": true
+  },
+  "TraceTimeline": {
+    "dataSource": null,
+    "public": true
+  },
+  "TraceWaterfall": {
+    "dataSource": null,
+    "public": true
+  },
+  "TraceTransactionKey": {
+    "dataSource": null,
+    "public": true
+  },
+  "TraceTransactionHistory": {
+    "dataSource": null,
+    "public": true
+  },
   "ArcApp": {
     "dataSource": null,
     "public": true

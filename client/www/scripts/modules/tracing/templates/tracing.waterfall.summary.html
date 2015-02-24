@@ -1,0 +1,21 @@
+<div class='waterfall-summary'>
+  <h4><%= waterfall.costSummary.summaryText %></h4>
+  <h5>Seen <strong><%= waterfall['instance_count'] %>x</strong> at <strong><%= format.ms(waterfall.stats['duration'] / 1000) %></strong> for a total of <strong><%= format.ms(waterfall.stats['total_duration'] / 1000) %></strong></h5>
+  <ul class='tagGroups'>
+    <% Object.keys(tagGroups).forEach(function(key){ %>
+    <li class='tagGroup'>
+      <% if (tagGroups[key].length > 1) { %>
+      <%= key %>/... (<span role='toggle-more-tags' class='more'><%= tagGroups[key].length %> more</span><span role='toggle-more-tags' class='less'>less</span>)
+      <ul class='tags'>
+        <% tagGroups[key].forEach(function(tag){ %>
+        <li><%= key + '/' + tag %></li>
+        <% }) %>
+      </ul>
+      <% } else { %>
+      <%= tagGroups[key][0] ? (key + '/' + tagGroups[key][0]) : key %>
+      <% } %>
+    </li>
+    <% }) %>
+  </ul>
+
+</div>

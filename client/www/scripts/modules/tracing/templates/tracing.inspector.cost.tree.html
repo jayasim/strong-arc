@@ -1,0 +1,51 @@
+
+<div class="inspector">
+  <div class='panel panel-primary'>
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Inspector</h3>
+    </div>
+
+    <ul class='list-group'>
+
+      <li class='list-group-item'>
+        <strong>Name: </strong><%= item.name %>
+      </li>
+
+      <% if (trace.functions[item.id].start) { %>
+      <% if (trace.functions[item.id].module) { %>
+      <li class='list-group-item'><strong>Module: </strong><%= trace.functions[item.id].module.name %></li>
+      <li class='list-group-item'><strong>Version: </strong><%= trace.functions[item.id].module.version %></li>
+      <% } %>
+      <li class='list-group-item'><strong>Filename: </strong><%= trace.functions[item.id].module.filename %></li>
+      <li class='list-group-item'><strong>Line: </strong><%= trace.functions[item.id].start.line %></li>
+      <li class='list-group-item'><strong>Column: </strong><%= trace.functions[item.id].start.column %></li>
+      <% } %>
+
+      <li class='list-group-item'>
+        <strong>Total Cost: </strong><%= format.msFormat(item.cost) %>
+      </li>
+
+      <li class='list-group-item'>
+        <strong>Self Cost: </strong><%= format.msFormat(item.selfCost) %>
+      </li>
+
+      <li class='list-group-item'>
+        <strong>Child Cost: </strong><%= format.msFormat(item.childCost) %>
+      </li>
+
+      <li class='list-group-item'>
+        <strong>Total Percentage: </strong><%= item.totalPct %>%
+      </li>
+
+      <li class='list-group-item'>
+        <strong>Self Percentage: </strong><%= item.selfPct %>%
+      </li>
+
+      <li class='list-group-item'>
+        <strong>Child Percentage: </strong><%= item.childPct %>%
+      </li>
+
+    </ul>
+  </div>
+</div>

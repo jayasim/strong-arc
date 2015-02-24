@@ -101,6 +101,504 @@ module.factory(
 
 /**
  * @ngdoc object
+ * @name ArcServices.Trace
+ * @header ArcServices.Trace
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `Trace` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "Trace",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/Traces/:id",
+      { 'id': '@id' },
+      {
+
+        /**
+         * @ngdoc method
+         * @name ArcServices.Trace#fetchTrace
+         * @methodOf ArcServices.Trace
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `msg` – `{string=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `data` – `{string=}` - 
+         */
+        "fetchTrace": {
+          url: urlBase + "/Traces/fetchTrace",
+          method: "POST"
+        },
+      }
+    );
+
+
+
+
+    /**
+    * @ngdoc property
+    * @name ArcServices.Trace#modelName
+    * @propertyOf ArcServices.Trace
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `Trace`.
+    */
+    R.modelName = "Trace";
+
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
+ * @name ArcServices.TraceHost
+ * @header ArcServices.TraceHost
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `TraceHost` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "TraceHost",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/TraceHosts/:id",
+      { 'id': '@id' },
+      {
+
+        /**
+         * @ngdoc method
+         * @name ArcServices.TraceHost#fetchHosts
+         * @methodOf ArcServices.TraceHost
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `msg` – `{string=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `data` – `{string=}` - 
+         */
+        "fetchHosts": {
+          url: urlBase + "/TraceHosts/fetchHosts",
+          method: "POST"
+        },
+      }
+    );
+
+
+
+
+    /**
+    * @ngdoc property
+    * @name ArcServices.TraceHost#modelName
+    * @propertyOf ArcServices.TraceHost
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `TraceHost`.
+    */
+    R.modelName = "TraceHost";
+
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
+ * @name ArcServices.TraceTimeline
+ * @header ArcServices.TraceTimeline
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `TraceTimeline` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "TraceTimeline",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/TraceTimelines/:id",
+      { 'id': '@id' },
+      {
+
+        /**
+         * @ngdoc method
+         * @name ArcServices.TraceTimeline#fetchTimeLine
+         * @methodOf ArcServices.TraceTimeline
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `msg` – `{string=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `data` – `{string=}` - 
+         */
+        "fetchTimeLine": {
+          url: urlBase + "/TraceTimelines/fetchTimeLine",
+          method: "POST"
+        },
+      }
+    );
+
+
+
+
+    /**
+    * @ngdoc property
+    * @name ArcServices.TraceTimeline#modelName
+    * @propertyOf ArcServices.TraceTimeline
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `TraceTimeline`.
+    */
+    R.modelName = "TraceTimeline";
+
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
+ * @name ArcServices.TraceWaterfall
+ * @header ArcServices.TraceWaterfall
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `TraceWaterfall` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "TraceWaterfall",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/TraceWaterfalls/:id",
+      { 'id': '@id' },
+      {
+
+        /**
+         * @ngdoc method
+         * @name ArcServices.TraceWaterfall#transactionKeys
+         * @methodOf ArcServices.TraceWaterfall
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `msg` – `{string=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `data` – `{string=}` - 
+         */
+        "transactionKeys": {
+          url: urlBase + "/TraceWaterfalls/transactionKeys",
+          method: "POST"
+        },
+      }
+    );
+
+
+
+
+    /**
+    * @ngdoc property
+    * @name ArcServices.TraceWaterfall#modelName
+    * @propertyOf ArcServices.TraceWaterfall
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `TraceWaterfall`.
+    */
+    R.modelName = "TraceWaterfall";
+
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
+ * @name ArcServices.TraceTransactionKey
+ * @header ArcServices.TraceTransactionKey
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `TraceTransactionKey` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "TraceTransactionKey",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/TraceTransactionKeys/:id",
+      { 'id': '@id' },
+      {
+
+        /**
+         * @ngdoc method
+         * @name ArcServices.TraceTransactionKey#transactionKeys
+         * @methodOf ArcServices.TraceTransactionKey
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `msg` – `{string=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `data` – `{string=}` - 
+         */
+        "transactionKeys": {
+          url: urlBase + "/TraceTransactionKeys/transactionKeys",
+          method: "POST"
+        },
+      }
+    );
+
+
+
+
+    /**
+    * @ngdoc property
+    * @name ArcServices.TraceTransactionKey#modelName
+    * @propertyOf ArcServices.TraceTransactionKey
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `TraceTransactionKey`.
+    */
+    R.modelName = "TraceTransactionKey";
+
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
+ * @name ArcServices.TraceTransactionHistory
+ * @header ArcServices.TraceTransactionHistory
+ * @object
+ *
+ * @description
+ *
+ * A $resource object for interacting with the `TraceTransactionHistory` model.
+ *
+ * ## Example
+ *
+ * See
+ * {@link http://docs.angularjs.org/api/ngResource.$resource#example $resource}
+ * for an example of using this object.
+ *
+ */
+module.factory(
+  "TraceTransactionHistory",
+  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
+    var R = Resource(
+      urlBase + "/TraceTransactionHistories/:id",
+      { 'id': '@id' },
+      {
+
+        /**
+         * @ngdoc method
+         * @name ArcServices.TraceTransactionHistory#transactionHistory
+         * @methodOf ArcServices.TraceTransactionHistory
+         *
+         * @description
+         *
+         * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
+         *
+         * @param {Object=} parameters Request parameters.
+         *
+         *   This method does not accept any parameters.
+         *   Supply an empty object or omit this argument altogether.
+         *
+         * @param {Object} postData Request data.
+         *
+         *  - `msg` – `{string=}` - 
+         *
+         * @param {function(Object,Object)=} successCb
+         *   Success callback with two arguments: `value`, `responseHeaders`.
+         *
+         * @param {function(Object)=} errorCb Error callback with one argument:
+         *   `httpResponse`.
+         *
+         * @returns {Object} An empty reference that will be
+         *   populated with the actual data once the response is returned
+         *   from the server.
+         *
+         * Data properties:
+         *
+         *  - `data` – `{string=}` - 
+         */
+        "transactionHistory": {
+          url: urlBase + "/TraceTransactionHistories/transactionHistory",
+          method: "POST"
+        },
+      }
+    );
+
+
+
+
+    /**
+    * @ngdoc property
+    * @name ArcServices.TraceTransactionHistory#modelName
+    * @propertyOf ArcServices.TraceTransactionHistory
+    * @description
+    * The name of the model represented by this $resource,
+    * i.e. `TraceTransactionHistory`.
+    */
+    R.modelName = "TraceTransactionHistory";
+
+
+    return R;
+  }]);
+
+/**
+ * @ngdoc object
  * @name ArcServices.ArcApp
  * @header ArcServices.ArcApp
  * @object

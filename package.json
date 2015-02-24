@@ -31,7 +31,10 @@
     "strong-deploy": "^1.1.0",
     "strong-mesh-client": "^1.2.0",
     "strong-pm": "^1.6.0",
-    "ws": "~0.4.32"
+    "ws": "~0.4.32",
+    "loopback-connector-rest": "^1.5.0",
+    "http": "0.0.0",
+    "zlib": "^1.0.5"
   },
   "description": "A visual suite for the StrongLoop API Platform",
   "devDependencies": {

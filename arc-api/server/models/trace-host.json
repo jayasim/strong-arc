@@ -1,0 +1,13 @@
+{
+  "name": "TraceHost",
+  "base": "Model",
+  "properties": {
+    "data": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

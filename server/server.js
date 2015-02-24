@@ -10,6 +10,11 @@ var meshProxy = require('strong-mesh-client/proxy/server')(
   path.join(process.cwd(), process.env.MANAGER_CONFIG || 'arc-manager.json')
 );
 
+var tracer = require('concurix')({
+  accountKey: "arctest_concurix_key", // Any unique string
+  api_host: 'localhost',        // Defaults to localhost
+  api_port: 8103                // Defaults to 8103
+})
 
 // export the workspace object, useful e.g. in tests
 app.workspace = workspace;

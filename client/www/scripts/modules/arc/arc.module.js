@@ -33,6 +33,7 @@ var Arc = angular.module('Arc', [
   'ArcUserAuthFactory',
   'Composer',
   'Profiler',
+  'Tracing',
   'ArcUser',
   'IA',
   'PM',
@@ -87,6 +88,11 @@ Arc.config([
         url: '/process-manager',
         templateUrl: './scripts/modules/manager/templates/manager.main.html',
         controller: 'ManagerMainController'
+      })
+      .state('tracing', {
+        url: '/tracing',
+        templateUrl: './scripts/modules/tracing/templates/tracing.main.html',
+        controller: 'TracingMainController'
       })
       .state('composer', {
         url: '/composer',

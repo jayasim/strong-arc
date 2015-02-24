@@ -1,0 +1,44 @@
+<div class="inspector eventloop">
+  <div class='panel panel-primary'>
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Inspector</h3>
+    </div>
+
+    <ul class='list-group'>
+      <li class='list-group-item'>
+        <strong>Name: </strong><%= item.name %>
+      </li>
+
+      <li class='list-group-item'>
+        <strong>Cost: </strong><%= format.msFormat(item.cost) %>
+      </li>
+
+      <% if (item.costSummary && item.costSummary.topCosts) {  %>
+      <li class='top-costs list-group-item'>
+        <strong>Top Costs</strong>
+        <ul class='functions'>
+          <% item.costSummary.topCosts.slice(0, 5).forEach(function(d){ %>
+          <li class='function' data-id='<%= d.id %>'>
+            <div class='header row'>
+              <div class='function-name col-md-12 col-lg-8'>
+                <%= trace.functions[d.id].name %>
+              </div>
+              <div class='col-md-12 col-lg-4'>
+                <div class="progress">
+                  <span class='progress-value'><%= d.selfPct %>%</span>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="<%=  d.selfPct %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= d.selfPct %>%;"></div>
+                </div>
+              </div>
+            </div>
+            <%= trace.functions[d.id] ? fn({ item: d, fns: trace.functions }) : 'asyncronous wait' %>
+          </li>
+          <% }) %>
+        </ul>
+      </li>
+      <% } %>
+
+    </ul>
+
+  </div>
+</div>
