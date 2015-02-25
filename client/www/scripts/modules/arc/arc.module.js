@@ -34,6 +34,7 @@ var Arc = angular.module('Arc', [
   'Composer',
   'Profiler',
   'Tracing',
+  'TracingViz',
   'ArcUser',
   'IA',
   'PM',

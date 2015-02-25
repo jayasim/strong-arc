@@ -20,6 +20,21 @@ Tracing.service('TracingServices', [
       return this
     }
 
+    svc.convertTimeseries = function(t){
+      var ret = {};
+      ret.cpu = t.map(function(d){
+        var item = {
+          _t: moment(d.ts).unix()*1000,
+          'Load Average': d['s_la'],
+          'Uptime': d['p_ut'],
+          __data: d
+        };
+        return item;
+      });
+      ret.cpu = ret.cpu.sort(function(a,b){ return a._t - b._t;});
+      return ret;
+    };
+
     svc.fetchTrace = function fetchTrace(pfkey, cb) {
       var url = this.base + path.join('get_raw_pieces', encodeURIComponent(pfkey))
       cb = cb || function(){}
