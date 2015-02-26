@@ -1,0 +1,28 @@
+<div class="panel panel-info">
+  <div class="panel-heading help">
+    <h3 class="panel-title">Transaction History</h3>
+  </div>
+  <div class="hidden alert alert-default" role="help-description">
+    <p>
+      Transaction sequences are identifiable routes through a program, such as all of the code invoked to respond to an incoming http request.
+      The list below contains all of the idenfitied routes active in the program during the profiling window.
+    </p>
+    <p>
+      Select any transaction below to see the distinct code paths that handle the transaction.  Each code path can be clicked on as well to see
+      details on that individual code path (including callback delays and a flame graph of execution time)
+    </p>
+  </div>
+
+  <ul data-hook='transaction-list-cont' class='transactions list-group'>
+    <header class='list-group-item'>
+      <table>
+        <thead>
+        <tr>
+          <th class='transaction-route'>Transaction Route</th>
+          <th class='transaction-average-mean'>Mean Processing Time</th>
+        </tr>
+        </thead>
+        <table>
+    </header>
+  </ul>
+</div>

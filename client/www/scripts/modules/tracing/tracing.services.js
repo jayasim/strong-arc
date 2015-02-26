@@ -3,7 +3,9 @@ Tracing.service('TracingServices', [
   '$log',
   'TraceHost',
   'TraceTimeline',
-  function($http, $log, TraceHost, TraceTimeline) {
+  'TraceTransactionKey',
+  'TraceTransactionHistory',
+  function($http, $log, TraceHost, TraceTimeline, TraceTransactionKey, TraceTransactionHistory) {
     var svc = this;
     var currTraceHosts = [];
 
@@ -22,6 +24,18 @@ Tracing.service('TracingServices', [
 
     svc.convertTimeseries = function(t){
       var ret = {};
+      ret.mem = t.map(function(d){
+        var item = {
+          _t: moment(d.ts).unix()*1000,
+          'Process Heap Total': d.p_mt,
+          'Process Heap Used': d.p_mu,
+          'Process RSS': d.p_mr,
+          __data: d
+        };
+        return item;
+      });
+      ret.mem = ret.mem.sort(function(a,b){ return a._t - b._t;});
+
       ret.cpu = t.map(function(d){
         var item = {
           _t: moment(d.ts).unix()*1000,
@@ -59,7 +73,7 @@ Tracing.service('TracingServices', [
     };
 
     // get first index for prototype
-    svc.getCurrentHost = function() {
+    svc.getFirstHost = function() {
       return currTraceHosts[0];
     };
 
@@ -76,32 +90,38 @@ Tracing.service('TracingServices', [
 
     };
 
-    svc.transactionKeys = function transactionKeys(host, pid, cb){
-      var self = this
-      var url = this.base + path.join('get_meta_transactions', this.project, '0/0')
-      cb = cb || function(){}
-      $http.get({
-        url: url,
-        success: function(data, status, xhr) {
-          var transactions = data.hosts[host] ? data.hosts[host][pid] : []
-          cb(null, transactions)
-        },
-        error: function(xhr, status, err) { cb(err) },
-        dataType: 'json'
-      })
+    svc.transactionKeys = function transactionKeys(reqparams){
+
+      return TraceTransactionKey.transactionKeys(reqparams)
+        .$promise
+        .then(function(response) {
+          return JSON.parse(response.data);
+        })
+        .catch(function(error) {
+          $log.warn('error getting transactionKeys: ' + error.message);
+        });
     };
 
-    svc.transactionHistory = function transactionHistory(transaction, host, pid, cb){
-      var url = this.base + path.join('get_transaction', this.project, transaction, ('' + host || '0'), ('' + pid || '0'))
-      cb = cb || function(){}
-      $http.get({
-        url: url,
-        success: function(data, status, xhr) { cb(null, data) },
-        error: function(xhr, status, err) { cb(err) },
-        dataType: 'json'
-      })
-    };
+    svc.transactionHistory = function transactionHistory(transaction, host, pid) {
 
+      var reqparams = {
+        project: 'wfp:helloworld',
+        transaction: transaction,
+        host: host,
+        pid: pid
+      };
+
+      //var url = this.base + path.join('get_transaction', this.project, transaction, ('' + host || '0'), ('' + pid || '0'))
+
+      return TraceTransactionHistory.transactionHistory({reqparams: reqparams})
+        .$promise
+        .then(function (response) {
+          return response;
+        })
+        .catch(function (error) {
+          $log.warn('bad get transaction history: ' + error.message);
+        });
+    };
     return svc;
   }
 ]);

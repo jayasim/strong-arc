@@ -3,12 +3,19 @@ module.exports = function(TraceTransactionHistory) {
   var http = require("http");
   var zlib = require("zlib");
 
-  TraceTransactionHistory.transactionHistory = function(msg, cb) {
+  TraceTransactionHistory.transactionHistory = function(reqparams, cb) {
 
     var project = 'wfp:helloworld';
-    var urlString = 'http://localhost:8103/get_host_pid_list/wfp:helloworld';
+    //var urlString = 'http://localhost:8103/get_transaction/' + reqparams.project + '/' + reqparams.host + '/' + reqparams.pid;
+    var urlString = 'http://localhost:8103/get_transaction/' + reqparams.project + '/' + reqparams.transaction + '/' + reqparams.host + '/' + reqparams.pid;
     //  var url = this.base + path.join('get_host_pid_list', this.project)
     // cb = cb || function(data){}
+    console.log('|');
+    console.log('|');
+    console.log('|wtf: ' + urlString);
+    console.log('|');
+    console.log('|');
+    console.log('|');
 
 
 
@@ -17,6 +24,8 @@ module.exports = function(TraceTransactionHistory) {
       var buffer = [];
 
       http.get(url, function(res) {
+
+
         // pipe the response into the gunzip to decompress
         var gunzip = zlib.createGunzip();
         res.pipe(gunzip);
@@ -38,7 +47,7 @@ module.exports = function(TraceTransactionHistory) {
     }
 
     getGzipped(urlString, function(err, data) {
-      console.log('|    DATA   | ----------   | ' + data);
+      console.log('|  transactionHistory  DATA   | ----------   | ' + data);
       cb(null, data);
     });
 
@@ -48,7 +57,7 @@ module.exports = function(TraceTransactionHistory) {
   TraceTransactionHistory.remoteMethod(
     'transactionHistory',
     {
-      accepts: {arg: 'msg', type: 'string'},
+      accepts: {arg: 'reqparams', type: 'object'},
       returns: {arg: 'data', type: 'string'}
     }
   );

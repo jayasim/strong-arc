@@ -3,10 +3,10 @@ module.exports = function(TraceTransactionKey) {
   var http = require("http");
   var zlib = require("zlib");
 
-  TraceTransactionKey.transactionKeys = function(msg, cb) {
+  TraceTransactionKey.transactionKeys = function(reqparams, cb) {
 
     var project = 'wfp:helloworld';
-    var urlString = 'http://localhost:8103/get_host_pid_list/wfp:helloworld';
+    var urlString = 'http://localhost:8103/get_meta_transactions/' + reqparams.project + '/0/0';
     //  var url = this.base + path.join('get_host_pid_list', this.project)
     // cb = cb || function(data){}
 
@@ -38,7 +38,7 @@ module.exports = function(TraceTransactionKey) {
     }
 
     getGzipped(urlString, function(err, data) {
-      console.log('|    DATA   | ----------   | ' + data);
+      console.log('|  transaction key  DATA   | ----------   | ' + data);
       cb(null, data);
     });
 
@@ -48,7 +48,7 @@ module.exports = function(TraceTransactionKey) {
   TraceTransactionKey.remoteMethod(
     'transactionKeys',
     {
-      accepts: {arg: 'msg', type: 'string'},
+      accepts: {arg: 'reqparams', type: 'object'},
       returns: {arg: 'data', type: 'string'}
     }
   );

@@ -3,13 +3,9 @@ module.exports = function(TraceTimeline) {
   var http = require("http");
   var zlib = require("zlib");
 
-  TraceTimeline.fetchTimeLine = function (msg, cb) {
+  TraceTimeline.fetchTimeLine = function (reqparams, cb) {
 
-    var project = 'wfp:helloworld';
-    var urlString = 'http://localhost:8103/get_raw_memory_pieces/wfp:helloworld/undefined/undefined';
-    //  var url = this.base + path.join('get_host_pid_list', this.project)
-    // cb = cb || function(data){}
-
+    var urlString = 'http://localhost:8103/get_raw_memory_pieces/' + reqparams.project + '/' + reqparams.host + '/' + reqparams.pid;
 
     function getGzipped(url, callback) {
       // buffer to store the streamed decompression
@@ -37,7 +33,7 @@ module.exports = function(TraceTimeline) {
     }
 
     getGzipped(urlString, function (err, data) {
-      console.log('|    DATA   | ----------   | ' + data);
+     // console.log('|    DATA   | ----------   | ' + data);
       cb(null, data);
     });
 
@@ -49,7 +45,7 @@ module.exports = function(TraceTimeline) {
   TraceTimeline.remoteMethod(
     'fetchTimeLine',
     {
-      accepts: {arg: 'msg', type: 'string'},
+      accepts: {arg: 'reqparams', type: 'object'},
       returns: {arg: 'data', type: 'string'}
     }
   );
